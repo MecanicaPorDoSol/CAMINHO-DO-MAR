@@ -121,12 +121,12 @@ button {
 
     <div class="item">
       <span>Coca Lata (R$6)</span>
-      <input type="number" id="Coca" min="0" value="">
+      <input type="number" id="refri" min="0" value="">
     </div>
 
     <div class="item">
       <span>Guaraná Lata (R$6)</span>
-      <input type="number" id="Guaraná" min="0" value="">
+      <input type="number" id="refri" min="0" value="">
     </div>
     
 
@@ -161,8 +161,7 @@ function fazerPedido() {
   let s = document.getElementById("salada").value;
   let c = document.getElementById("coracao").value;
   let cal = document.getElementById("calabresa").value;
-  let r = document.getElementById("Coca").value;
-  let d = document.getElementById("Guaraná").value;
+  let r = document.getElementById("refri").value;
 
   if(nome === "") {
     alert("Digite seu nome!");
