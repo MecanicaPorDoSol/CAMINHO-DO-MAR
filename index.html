@@ -121,12 +121,12 @@ button {
 
     <div class="item">
       <span>coca Lata (R$6)</span>
-      <input type="number" id="refri" min="0" value="0">
+      <input type="number" id="Coca" min="0" value="0">
     </div>
 
     <div class="item">
       <span>Guaraná Lata (R$6)</span>
-      <input type="number" id="refri" min="0" value="0">
+      <input type="number" id="Guaraná" min="0" value="0">
     </div>
     
 
@@ -143,7 +143,8 @@ function calcularTotal() {
     (document.getElementById("salada").value * 18) +
     (document.getElementById("coracao").value * 22) +
     (document.getElementById("calabresa").value * 22) +
-    (document.getElementById("refri").value * 6);
+    (document.getElementById("Coca").value * 6);
+    (document.getElementById("Guaraná").value * 6);
 
   document.getElementById("total").innerText = "Total: R$ " + total;
 }
