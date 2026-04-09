@@ -101,32 +101,32 @@ button {
 
     <div class="item">
       <span>X Burguer (R$16)</span>
-      <input type="number" id="burguer" min="0" value="0">
+      <input type="number" id="burguer" min="" value="0">
     </div>
 
     <div class="item">
       <span>X Salada (R$18)</span>
-      <input type="number" id="salada" min="0" value="0">
+      <input type="number" id="salada" min="" value="0">
     </div>
 
     <div class="item">
       <span>X Coração (R$22)</span>
-      <input type="number" id="coracao" min="0" value="0">
+      <input type="number" id="coracao" min="" value="0">
     </div>
 
     <div class="item">
       <span>X Calabresa (R$22)</span>
-      <input type="number" id="calabresa" min="0" value="0">
+      <input type="number" id="calabresa" min="" value="0">
     </div>
 
     <div class="item">
       <span>Coca Lata (R$6)</span>
-      <input type="number" id="Coca" min="0" value="0">
+      <input type="number" id="Coca" min="" value="0">
     </div>
 
     <div class="item">
       <span>Guaraná Lata (R$6)</span>
-      <input type="number" id="Guaraná" min="0" value="0">
+      <input type="number" id="refri" min="" value="0">
     </div>
     
 
@@ -144,7 +144,7 @@ function calcularTotal() {
     (document.getElementById("coracao").value * 22) +
     (document.getElementById("calabresa").value * 22) +
     (document.getElementById("Coca").value * 6);
-    (document.getElementById("Guaraná").value * 6);
+    (document.getElementById("refri").value * 6);
 
   document.getElementById("total").innerText = "Total a Pagar: R$ " + total;
 }
