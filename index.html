@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caminho do Mar - Pedidos</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      background: url('https://images.unsplash.com/photo-1550547660-d9450f859349') no-repeat center center fixed;
+      background-size: cover;
+    }
+    .overlay {
+      background: rgba(0,0,0,0.7);
+      min-height: 100vh;
+    }
+    header {
+      background: #ff3c00;
+      padding: 15px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+    }
+    .menu-item {
+      background: #222;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    button {
+      background: #ff3c00;
+      border: none;
+      padding: 10px 15px;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #ff5e2e;
+    }
+    .cart {
+      margin-top: 20px;
+      padding: 15px;
+      background: #222;
+      border-radius: 10px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+  </style>
+</head>
+<body><div class="overlay"><header>CAMINHO DO MAR - Lanches</header><div class="container">
+  <h2>Cardápio</h2>  <div class="menu-item">
+    <span>X-Burguer - R$ 15</span>
+    <button onclick="addToCart('X-Burguer - R$15')">Adicionar</button>
+  </div>  <div class="menu-item">
+    <span>X-Salada - R$ 18</span>
+    <button onclick="addToCart('X-Salada - R$18')">Adicionar</button>
+  </div>  <div class="menu-item">
+    <span>X-Bacon - R$ 20</span>
+    <button onclick="addToCart('X-Bacon - R$20')">Adicionar</button>
+  </div>  <div class="menu-item">
+    <span>Refrigerante - R$ 6</span>
+    <button onclick="addToCart('Refrigerante - R$6')">Adicionar</button>
+  </div>  <div class="cart">
+    <h2>Seu Pedido</h2>
+    <ul id="cartList"></ul><input type="text" id="nome" placeholder="Seu nome">
+<input type="text" id="endereco" placeholder="Endereço para entrega">
+
+<button onclick="sendOrder()">Finalizar Pedido</button>
+
+  </div>
+</div></div><script>
+  let cart = [];
+
+  function addToCart(item) {
+    cart.push(item);
+    updateCart();
+  }
+
+  function updateCart() {
+    const list = document.getElementById('cartList');
+    list.innerHTML = '';
+    cart.forEach(i => {
+      const li = document.createElement('li');
+      li.textContent = i;
+      list.appendChild(li);
+    });
+  }
+
+  function sendOrder() {
+    const nome = document.getElementById('nome').value;
+    const endereco = document.getElementById('endereco').value;
+
+    if (!nome || !endereco || cart.length === 0) {
+      alert('Preencha tudo e adicione itens!');
+      return;
+    }
+
+    const mensagem = `Pedido de ${nome}%0AEndereço: ${endereco}%0AItens:%0A- ${cart.join('%0A- ')}`;
+    const telefone = '5548999367310';
+
+    window.open(`https://wa.me/${telefone}?text=${mensagem}`, '_blank');
+  }
+</script></body>
+</html>
