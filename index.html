@@ -129,7 +129,7 @@ button {
       <input type="number" id="guarana" min="0" value="0">
     </div>
 
-    <!-- PAGAMENTO -->
+    <!-- FORMA DE PAGAMENTO -->
     <select id="pagamento" onchange="mostrarPix()">
       <option value="">Forma de pagamento</option>
       <option value="Cartão">Cartão</option>
@@ -144,20 +144,20 @@ button {
     <div class="total" id="total">Total: R$ 0</div>
 
     <button onclick="fazerPedido()">Fazer Pedido</button>
+
   </div>
 </div>
 
 <script>
 function calcularTotal() {
   let total =
-    (burguer.value * 16) +
-    (salada.value * 18) +
-    (coracao.value * 22) +
-    (calabresa.value * 22) +
-    (coca.value * 6) +
-    (guarana.value * 6);
+    (document.getElementById("burguer").value * 16) +
+    (document.getElementById("salada").value * 18) +
+    (document.getElementById("coracao").value * 22) +
+    (document.getElementById("calabresa").value * 22) +
+    (document.getElementById("coca").value * 6) +
+    (document.getElementById("guarana").value * 6);
 
-  total = Number(total);
   document.getElementById("total").innerText = "Total: R$ " + total;
 }
 
@@ -175,15 +175,15 @@ function fazerPedido() {
   let nome = document.getElementById("nome").value;
   let forma = document.getElementById("pagamento").value;
 
-  let b = burguer.value;
-  let s = salada.value;
-  let c = coracao.value;
-  let cal = calabresa.value;
-  let cocaC = coca.value;
-  let gua = guarana.value;
+  let b = document.getElementById("burguer").value;
+  let s = document.getElementById("salada").value;
+  let c = document.getElementById("coracao").value;
+  let cal = document.getElementById("calabresa").value;
+  let coca = document.getElementById("coca").value;
+  let gua = document.getElementById("guarana").value;
 
   if(nome === "" || forma === "") {
-    alert("Digite nome e escolha forma de pagamento!");
+    alert("Digite seu nome e escolha a forma de pagamento!");
     return;
   }
 
@@ -193,11 +193,11 @@ function fazerPedido() {
   if(s > 0) mensagem += `- ${s}x X Salada%0A`;
   if(c > 0) mensagem += `- ${c}x X Coração%0A`;
   if(cal > 0) mensagem += `- ${cal}x X Calabresa%0A`;
-  if(cocaC > 0) mensagem += `- ${cocaC}x Coca-Cola Lata%0A`;
+  if(coca > 0) mensagem += `- ${coca}x Coca-Cola Lata%0A`;
   if(gua > 0) mensagem += `- ${gua}x Guaraná Lata%0A`;
 
   let total =
-    (b * 16) + (s * 18) + (c * 22) + (cal * 22) + (cocaC * 6) + (gua * 6);
+    (b * 16) + (s * 18) + (c * 22) + (cal * 22) + (coca * 6) + (gua * 6);
 
   if(total === 0) {
     alert("Escolha pelo menos um item!");
