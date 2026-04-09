@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Caminho da Maré</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      color: white;
+    }
+
+    /* Fundo com imagem */
+    .hero {
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1550547660-d9450f859349') no-repeat center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .overlay {
+      background: rgba(0,0,0,0.7);
+      padding: 40px;
+      border-radius: 15px;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #ffcc00;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      background: #25D366;
+      color: white;
+      padding: 12px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    /* Cardápio */
+    .menu {
+      background: #111;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .menu h2 {
+      color: #ffcc00;
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+
+    .item {
+      background: #222;
+      margin: 10px auto;
+      padding: 15px;
+      border-radius: 10px;
+      max-width: 400px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Capa -->
+  <section class="hero">
+    <div class="overlay">
+      <h1>🍔 CAMINHO DA MARÉ</h1>
+      <p>Os melhores lanches da cidade!</p>
+      <a class="btn" href="https://wa.me/5548999367310" target="_blank">
+        Fazer Pedido no WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- Cardápio -->
+  <section class="menu">
+    <h2>Nosso Cardápio</h2>
+
+    <div class="item">
+      <span>X Burguer</span>
+      <span>R$ 16,00</span>
+    </div>
+
+    <div class="item">
+      <span>X Salada</span>
+      <span>R$ 18,00</span>
+    </div>
+
+    <div class="item">
+      <span>X Coração</span>
+      <span>R$ 22,00</span>
+    </div>
+
+    <div class="item">
+      <span>X Calabresa</span>
+      <span>R$ 22,00</span>
+    </div>
+
+    <div class="item">
+      <span>Refrigerante Lata</span>
+      <span>R$ 6,00</span>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer>
+    Contato: (48) 99936-7310 <br>
+    © 2026 Caminho da Maré
+  </footer>
+
+</body>
+</html>
