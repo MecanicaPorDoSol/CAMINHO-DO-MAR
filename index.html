@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Caminho do Mar</title>
+<title>Caminho da Maré</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -17,7 +17,6 @@ body {
   color: white;
 }
 
-/* Fundo */
 .hero {
   min-height: 100vh;
   background: url('https://images.unsplash.com/photo-1550547660-d9450f859349') no-repeat center/cover;
@@ -49,7 +48,6 @@ input {
   border: none;
 }
 
-/* Itens */
 .item {
   display: flex;
   justify-content: space-between;
@@ -60,16 +58,11 @@ input {
   border-radius: 8px;
 }
 
-.item span {
-  font-size: 14px;
-}
-
 .item input {
   width: 60px;
   text-align: center;
 }
 
-/* Botão */
 button {
   width: 100%;
   padding: 12px;
@@ -95,40 +88,39 @@ button {
 
 <div class="hero">
   <div class="overlay">
-    <h1>🍔 CAMINHO DO MAR 🍔</h1>
+    <h1>🍔 CAMINHO DA MARÉ</h1>
 
     <input type="text" id="nome" placeholder="Seu nome">
 
     <div class="item">
       <span>X Burguer (R$16)</span>
-      <input type="number" id="burguer" min="0" value="">
+      <input type="number" id="burguer" min="0" value="0">
     </div>
 
     <div class="item">
       <span>X Salada (R$18)</span>
-      <input type="number" id="salada" min="0" value="">
+      <input type="number" id="salada" min="0" value="0">
     </div>
 
     <div class="item">
       <span>X Coração (R$22)</span>
-      <input type="number" id="coracao" min="0" value="">
+      <input type="number" id="coracao" min="0" value="0">
     </div>
 
     <div class="item">
       <span>X Calabresa (R$22)</span>
-      <input type="number" id="calabresa" min="0" value="">
+      <input type="number" id="calabresa" min="0" value="0">
     </div>
 
     <div class="item">
-      <span>Coca Lata (R$6)</span>
-      <input type="number" id="refri" min="0" value="">
+      <span>Coca-Cola Lata (R$6)</span>
+      <input type="number" id="coca" min="0" value="0">
     </div>
 
     <div class="item">
       <span>Guaraná Lata (R$6)</span>
-      <input type="number" id="refri" min="0" value="">
+      <input type="number" id="guarana" min="0" value="0">
     </div>
-    
 
     <div class="total" id="total">Total: R$ 0</div>
 
@@ -143,13 +135,12 @@ function calcularTotal() {
     (document.getElementById("salada").value * 18) +
     (document.getElementById("coracao").value * 22) +
     (document.getElementById("calabresa").value * 22) +
-    (document.getElementById("Coca").value * 6);
-    (document.getElementById("Guaraná").value * 6);
+    (document.getElementById("coca").value * 6) +
+    (document.getElementById("guarana").value * 6);
 
-  document.getElementById("total").innerText = "Total a Pagar: R$ " + total;
+  document.getElementById("total").innerText = "Total: R$ " + total;
 }
 
-// Atualiza automaticamente
 document.querySelectorAll("input[type=number]").forEach(input => {
   input.addEventListener("input", calcularTotal);
 });
@@ -161,23 +152,25 @@ function fazerPedido() {
   let s = document.getElementById("salada").value;
   let c = document.getElementById("coracao").value;
   let cal = document.getElementById("calabresa").value;
-  let r = document.getElementById("refri").value;
+  let coca = document.getElementById("coca").value;
+  let gua = document.getElementById("guarana").value;
 
   if(nome === "") {
     alert("Digite seu nome!");
     return;
   }
 
-  let mensagem = `Olá, me chamo ${nome}%0A%0APedido:%0A`;
+  let mensagem = `Olá, meu nome é ${nome}%0A%0APedido:%0A`;
 
   if(b > 0) mensagem += `- ${b}x X Burguer%0A`;
   if(s > 0) mensagem += `- ${s}x X Salada%0A`;
   if(c > 0) mensagem += `- ${c}x X Coração%0A`;
   if(cal > 0) mensagem += `- ${cal}x X Calabresa%0A`;
-  if(r > 0) mensagem += `- ${r}x %0A`;
+  if(coca > 0) mensagem += `- ${coca}x Coca-Cola Lata%0A`;
+  if(gua > 0) mensagem += `- ${gua}x Guaraná Lata%0A`;
 
   let total =
-    (b * 16) + (s * 18) + (c * 22) + (cal * 22) + (r * 6);
+    (b * 16) + (s * 18) + (c * 22) + (cal * 22) + (coca * 6) + (gua * 6);
 
   if(total === 0) {
     alert("Escolha pelo menos um item!");
@@ -186,7 +179,7 @@ function fazerPedido() {
 
   mensagem += `%0ATotal: R$ ${total}`;
 
-  let numero = "554899263882";
+  let numero = "5548999263882";
 
   window.open(`https://wa.me/${numero}?text=${mensagem}`, "_blank");
 }
