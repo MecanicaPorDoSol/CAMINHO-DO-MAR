@@ -14,206 +14,258 @@
 }
 
 body {
+  background: #111;
   color: white;
 }
 
-.hero {
-  min-height: 100vh;
-  background: url('https://images.unsplash.com/photo-1550547660-d9450f859349') no-repeat center/cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Header */
+.header {
+  text-align: center;
   padding: 20px;
-}
-
-.overlay {
-  background: rgba(0,0,0,0.85);
-  padding: 25px;
-  border-radius: 15px;
-  width: 100%;
-  max-width: 420px;
-}
-
-h1 {
-  text-align: center;
+  background: #000;
   color: #ffcc00;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Container */
+.container {
+  padding: 15px;
+  max-width: 500px;
+  margin: auto;
+}
+
+/* Card de produto */
+.card {
+  background: #1c1c1c;
+  border-radius: 15px;
   margin-bottom: 15px;
-}
-
-input, select {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 8px;
-  border: none;
-}
-
-.item {
+  overflow: hidden;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin: 8px 0;
-  background: #222;
-  padding: 10px;
-  border-radius: 8px;
 }
 
-.item input {
-  width: 60px;
+.card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.info {
+  flex: 1;
+  padding: 10px;
+}
+
+.info h3 {
+  font-size: 16px;
+}
+
+.info p {
+  color: #ffcc00;
+  margin-top: 5px;
+}
+
+/* Quantidade */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.controls button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: #25D366;
+  color: white;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.controls span {
+  width: 20px;
   text-align: center;
 }
 
-button {
+/* Total */
+.total {
+  text-align: center;
+  font-size: 20px;
+  margin: 15px 0;
+  color: #ffcc00;
+}
+
+/* Botão */
+.btn {
   width: 100%;
-  padding: 12px;
+  padding: 15px;
   background: #25D366;
   border: none;
   color: white;
-  font-size: 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.total {
-  margin-top: 10px;
   font-size: 18px;
-  text-align: center;
-  color: #ffcc00;
+  border-radius: 10px;
 }
 
-.pix {
-  font-size: 14px;
-  color: #00ffcc;
-  text-align: center;
-  display: none;
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: none;
 }
 </style>
 </head>
 
 <body>
 
-<div class="hero">
-  <div class="overlay">
-    <h1>🍔 CAMINHO DA MARÉ</h1>
+<div class="header">🍔 CAMINHO DO MAR 🍔</div>
 
-    <input type="text" id="nome" placeholder="Seu nome">
+<div class="container">
 
-    <div class="item">
-      <span>X Burguer (R$16)</span>
-      <input type="number" id="burguer" min="0" value="0">
-    </div>
+<input type="text" id="nome" placeholder="Seu nome">
 
-    <div class="item">
-      <span>X Salada (R$18)</span>
-      <input type="number" id="salada" min="0" value="0">
-    </div>
+<!-- PRODUTOS -->
 
-    <div class="item">
-      <span>X Coração (R$22)</span>
-      <input type="number" id="coracao" min="0" value="0">
-    </div>
-
-    <div class="item">
-      <span>X Calabresa (R$22)</span>
-      <input type="number" id="calabresa" min="0" value="0">
-    </div>
-
-    <div class="item">
-      <span>Coca-Cola Lata (R$6)</span>
-      <input type="number" id="coca" min="0" value="0">
-    </div>
-
-    <div class="item">
-      <span>Guaraná Lata (R$6)</span>
-      <input type="number" id="guarana" min="0" value="0">
-    </div>
-
-    <!-- FORMA DE PAGAMENTO -->
-    <select id="pagamento" onchange="mostrarPix()">
-      <option value="">Forma de pagamento</option>
-      <option value="Cartão">Cartão</option>
-      <option value="Dinheiro">Dinheiro</option>
-      <option value="Pix">Pix</option>
-    </select>
-
-    <div class="pix" id="pixInfo">
-      Chave Pix: 48996886170
-    </div>
-
-    <div class="total" id="total">Total: R$ 0</div>
-
-    <button onclick="fazerPedido()">Fazer Pedido</button>
-
+<div class="card">
+  <img src="https://images.unsplash.com/photo-1550547660-d9450f859349">
+  <div class="info">
+    <h3>X Burguer</h3>
+    <p>R$16</p>
+  </div>
+  <div class="controls">
+    <button onclick="menos('burguer')">-</button>
+    <span id="burguer">0</span>
+    <button onclick="mais('burguer')">+</button>
   </div>
 </div>
 
-<script>
-function calcularTotal() {
-  let total =
-    (document.getElementById("burguer").value * 16) +
-    (document.getElementById("salada").value * 18) +
-    (document.getElementById("coracao").value * 22) +
-    (document.getElementById("calabresa").value * 22) +
-    (document.getElementById("coca").value * 6) +
-    (document.getElementById("guarana").value * 6);
+<div class="card">
+  <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd">
+  <div class="info">
+    <h3>X Salada</h3>
+    <p>R$18</p>
+  </div>
+  <div class="controls">
+    <button onclick="menos('salada')">-</button>
+    <span id="salada">0</span>
+    <button onclick="mais('salada')">+</button>
+  </div>
+</div>
 
+<div class="card">
+  <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d">
+  <div class="info">
+    <h3>X Coração</h3>
+    <p>R$22</p>
+  </div>
+  <div class="controls">
+    <button onclick="menos('coracao')">-</button>
+    <span id="coracao">0</span>
+    <button onclick="mais('coracao')">+</button>
+  </div>
+</div>
+
+<div class="card">
+  <img src="https://images.unsplash.com/photo-1606755962773-d324e0a13086">
+  <div class="info">
+    <h3>X Calabresa</h3>
+    <p>R$22</p>
+  </div>
+  <div class="controls">
+    <button onclick="menos('calabresa')">-</button>
+    <span id="calabresa">0</span>
+    <button onclick="mais('calabresa')">+</button>
+  </div>
+</div>
+
+<div class="card">
+  <img src="https://images.unsplash.com/photo-1580910051074-3eb694886505">
+  <div class="info">
+    <h3>Coca-Cola Lata</h3>
+    <p>R$6</p>
+  </div>
+  <div class="controls">
+    <button onclick="menos('coca')">-</button>
+    <span id="coca">0</span>
+    <button onclick="mais('coca')">+</button>
+  </div>
+</div>
+
+<div class="card">
+  <img src="https://images.unsplash.com/photo-1598514982901-7a4cfa4c6c4c">
+  <div class="info">
+    <h3>Guaraná Lata</h3>
+    <p>R$6</p>
+  </div>
+  <div class="controls">
+    <button onclick="menos('guarana')">-</button>
+    <span id="guarana">0</span>
+    <button onclick="mais('guarana')">+</button>
+  </div>
+</div>
+
+<div class="total" id="total">Total: R$ 0</div>
+
+<button class="btn" onclick="pedido()">Fazer Pedido</button>
+
+</div>
+
+<script>
+let precos = {
+  burguer: 16,
+  salada: 18,
+  coracao: 22,
+  calabresa: 22,
+  coca: 6,
+  guarana: 6
+};
+
+function mais(id){
+  let el = document.getElementById(id);
+  el.innerText++;
+  calcular();
+}
+
+function menos(id){
+  let el = document.getElementById(id);
+  if(el.innerText > 0) el.innerText--;
+  calcular();
+}
+
+function calcular(){
+  let total = 0;
+  for(let item in precos){
+    total += document.getElementById(item).innerText * precos[item];
+  }
   document.getElementById("total").innerText = "Total: R$ " + total;
 }
 
-document.querySelectorAll("input[type=number]").forEach(input => {
-  input.addEventListener("input", calcularTotal);
-});
-
-function mostrarPix() {
-  let forma = document.getElementById("pagamento").value;
-  document.getElementById("pixInfo").style.display =
-    forma === "Pix" ? "block" : "none";
-}
-
-function fazerPedido() {
+function pedido(){
   let nome = document.getElementById("nome").value;
-  let forma = document.getElementById("pagamento").value;
-
-  let b = document.getElementById("burguer").value;
-  let s = document.getElementById("salada").value;
-  let c = document.getElementById("coracao").value;
-  let cal = document.getElementById("calabresa").value;
-  let coca = document.getElementById("coca").value;
-  let gua = document.getElementById("guarana").value;
-
-  if(nome === "" || forma === "") {
-    alert("Digite seu nome e escolha a forma de pagamento!");
+  if(nome === ""){
+    alert("Digite seu nome!");
     return;
   }
 
-  let mensagem = `Olá, meu nome é ${nome}%0A%0APedido:%0A`;
+  let msg = `Olá, meu nome é ${nome}%0A%0APedido:%0A`;
+  let total = 0;
 
-  if(b > 0) mensagem += `- ${b}x X Burguer%0A`;
-  if(s > 0) mensagem += `- ${s}x X Salada%0A`;
-  if(c > 0) mensagem += `- ${c}x X Coração%0A`;
-  if(cal > 0) mensagem += `- ${cal}x X Calabresa%0A`;
-  if(coca > 0) mensagem += `- ${coca}x Coca-Cola Lata%0A`;
-  if(gua > 0) mensagem += `- ${gua}x Guaraná Lata%0A`;
+  for(let item in precos){
+    let qtd = document.getElementById(item).innerText;
+    if(qtd > 0){
+      msg += `- ${qtd}x ${item}%0A`;
+      total += qtd * precos[item];
+    }
+  }
 
-  let total =
-    (b * 16) + (s * 18) + (c * 22) + (cal * 22) + (coca * 6) + (gua * 6);
-
-  if(total === 0) {
-    alert("Escolha pelo menos um item!");
+  if(total === 0){
+    alert("Escolha algum item!");
     return;
   }
 
-  mensagem += `%0ATotal: R$ ${total}%0A`;
-  mensagem += `Forma de pagamento: ${forma}%0A`;
+  msg += `%0ATotal: R$ ${total}`;
 
-  if(forma === "Pix") {
-    mensagem += `Chave Pix: 48996886170%0A`;
-  }
-
-  let numero = "5548999367310";
-
-  window.open(`https://wa.me/${numero}?text=${mensagem}`, "_blank");
+  window.open(`https://wa.me/5548999367310?text=${msg}`);
 }
 </script>
 
