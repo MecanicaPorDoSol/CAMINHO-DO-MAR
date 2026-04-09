@@ -99,7 +99,6 @@ button {
 
     <input type="text" id="nome" placeholder="Seu nome">
 
-    <!-- Lanches -->
     <div class="item">
       <span>X Burguer (R$16)</span>
       <input type="number" id="burguer" min="0" value="0">
@@ -120,7 +119,6 @@ button {
       <input type="number" id="calabresa" min="0" value="0">
     </div>
 
-    <!-- Bebidas -->
     <div class="item">
       <span>Coca-Cola Lata (R$6)</span>
       <input type="number" id="coca" min="0" value="0">
@@ -131,7 +129,7 @@ button {
       <input type="number" id="guarana" min="0" value="0">
     </div>
 
-    <!-- Pagamento -->
+    <!-- PAGAMENTO -->
     <select id="pagamento" onchange="mostrarPix()">
       <option value="">Forma de pagamento</option>
       <option value="Cartão">Cartão</option>
@@ -160,7 +158,6 @@ function calcularTotal() {
     (guarana.value * 6);
 
   total = Number(total);
-
   document.getElementById("total").innerText = "Total: R$ " + total;
 }
 
@@ -183,4 +180,42 @@ function fazerPedido() {
   let c = coracao.value;
   let cal = calabresa.value;
   let cocaC = coca.value;
-  let gua = guarana.value);
+  let gua = guarana.value;
+
+  if(nome === "" || forma === "") {
+    alert("Digite nome e escolha forma de pagamento!");
+    return;
+  }
+
+  let mensagem = `Olá, meu nome é ${nome}%0A%0APedido:%0A`;
+
+  if(b > 0) mensagem += `- ${b}x X Burguer%0A`;
+  if(s > 0) mensagem += `- ${s}x X Salada%0A`;
+  if(c > 0) mensagem += `- ${c}x X Coração%0A`;
+  if(cal > 0) mensagem += `- ${cal}x X Calabresa%0A`;
+  if(cocaC > 0) mensagem += `- ${cocaC}x Coca-Cola Lata%0A`;
+  if(gua > 0) mensagem += `- ${gua}x Guaraná Lata%0A`;
+
+  let total =
+    (b * 16) + (s * 18) + (c * 22) + (cal * 22) + (cocaC * 6) + (gua * 6);
+
+  if(total === 0) {
+    alert("Escolha pelo menos um item!");
+    return;
+  }
+
+  mensagem += `%0ATotal: R$ ${total}%0A`;
+  mensagem += `Forma de pagamento: ${forma}%0A`;
+
+  if(forma === "Pix") {
+    mensagem += `Chave Pix: 48996886170%0A`;
+  }
+
+  let numero = "5548999367310";
+
+  window.open(`https://wa.me/${numero}?text=${mensagem}`, "_blank");
+}
+</script>
+
+</body>
+</html>
