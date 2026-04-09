@@ -126,7 +126,7 @@ button {
 
     <div class="item">
       <span>Guaraná Lata (R$6)</span>
-      <input type="number" id="guaraná" min="0" value="">
+      <input type="number" id="Guaraná" min="0" value="">
     </div>
     
 
@@ -143,8 +143,8 @@ function calcularTotal() {
     (document.getElementById("salada").value * 18) +
     (document.getElementById("coracao").value * 22) +
     (document.getElementById("calabresa").value * 22) +
-    (document.getElementById("coca").value * 6);
-    (document.getElementById("guaraná").value * 6);
+    (document.getElementById("Coca").value * 6);
+    (document.getElementById("Guaraná").value * 6);
 
   document.getElementById("total").innerText = "Total a Pagar: R$ " + total;
 }
@@ -161,7 +161,8 @@ function fazerPedido() {
   let s = document.getElementById("salada").value;
   let c = document.getElementById("coracao").value;
   let cal = document.getElementById("calabresa").value;
-  let r = document.getElementById("refri").value;
+  let r = document.getElementById("Coca").value;
+  let d = document.getElementById("Guaraná").value;
 
   if(nome === "") {
     alert("Digite seu nome!");
@@ -174,7 +175,7 @@ function fazerPedido() {
   if(s > 0) mensagem += `- ${s}x X Salada%0A`;
   if(c > 0) mensagem += `- ${c}x X Coração%0A`;
   if(cal > 0) mensagem += `- ${cal}x X Calabresa%0A`;
-  if(r > 0) mensagem += `- ${r}x Refrigerante Lata%0A`;
+  if(r > 0) mensagem += `- ${r}x %0A`;
 
   let total =
     (b * 16) + (s * 18) + (c * 22) + (cal * 22) + (r * 6);
