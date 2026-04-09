@@ -126,7 +126,7 @@ button {
 
     <div class="item">
       <span>Guaraná Lata (R$6)</span>
-      <input type="number" id="refri" min="0" value="">
+      <input type="number" id="guarana" min="0" value="">
     </div>
     
 
@@ -143,8 +143,8 @@ function calcularTotal() {
     (document.getElementById("salada").value * 18) +
     (document.getElementById("coracao").value * 22) +
     (document.getElementById("calabresa").value * 22) +
-    (document.getElementById("Coca").value * 6);
-    (document.getElementById("refri").value * 6);
+    (document.getElementById("coca").value * 6);
+    (document.getElementById("guaraná").value * 6);
 
   document.getElementById("total").innerText = "Total a Pagar: R$ " + total;
 }
